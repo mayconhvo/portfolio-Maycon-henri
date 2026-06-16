@@ -106,7 +106,7 @@
 
         /* CLASSE DO REFLEXO */
         .item.cartao-frente {
-            -webkit-box-reflect: below -11px linear-gradient(to bottom, rgba(255,255,255,0.7) 35%, transparent 70%);
+            -webkit-box-reflect: below -10px linear-gradient(to bottom, rgba(255,255,255,0.7) 0%, transparent 70%);
         }
 
         .item-overlay {
@@ -284,7 +284,6 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.4s ease;
         }
-        /* Ajuste automático para o formato vertical do player do YouTube */
         iframe.video-vertical { 
             max-width: 360px; 
             aspect-ratio: 9 / 16; 
@@ -301,6 +300,12 @@
             font-weight: 300;
             border-top: 1px solid rgba(255, 255, 255, 0.12);
             padding-top: 18px;
+        }
+
+        /* CORREÇÃO DO NEGRITO: Força as tags strong a ficarem destacadas */
+        .video-description strong {
+            font-weight: 700 !important;
+            color: #ffffff !important;
         }
 
         .fechar-btn {
@@ -320,7 +325,6 @@
 
     <div class="main-wrapper" id="mainWrapper">
 
-        <!-- TELA 1: CARROSSEL -->
         <section class="section">
             <header class="header">
                 <h1>Maycon Henrique</h1>
@@ -328,32 +332,26 @@
             </header>
 
             <div class="carousel">
-                <!-- [1] HORIZONTAL - Showreel -->
                 <div class="item" style="background-image: url('Show-reel.jpg');" data-video="https://www.youtube.com/embed/F_c2ZlePo9s" data-desc="Compilação de projetos criada para demonstrar minhas principais <strong>habilidades em edição de vídeo, motion graphics, sound design e VFX</strong>.<br><br>O único software que não foi utilizado neste projeto foi o Blender. A proposta foi apresentar uma visão geral das minhas capacidades técnicas e criativas em diferentes estilos de produção audiovisual.">
-    <div class="item-overlay"><div class="item-title">Showreel</div></div>
-</div>
+                    <div class="item-overlay"><div class="item-title">Showreel</div></div>
+                </div>
+                
+                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=2');" data-video="https://www.youtube.com/embed/BxBIFfehuQk" data-desc="Vídeo promocional com títulos em inglês. O objetivo deste projeto foi criar uma peça capaz de transmitir a energia e a empolgação de um rodeio, despertando o interesse do público em participar do evento.<br><br><strong>O principal desafio foi encontrar imagens de qualidade suficiente para compor a narrativa, já que todo o material precisou ser selecionado e organizado a partir de diferentes vídeos do YouTube.</strong> Além da edição, foi realizado um trabalho de ritmo, sincronização musical e construção de atmosfera utilizando músicas livres de direitos autorais.">
+                    <div class="item-overlay"><div class="item-title">Rodeo</div></div>
+                </div>
 
-<!-- [2] HORIZONTAL - Rodeo -->
-<div class="item" style="background-image: url('SUA_CAPA_AQUI.jpg');" data-video="https://www.youtube.com/embed/BxBIFfehuQk" data-desc="Vídeo promocional com títulos em inglês. O objetivo deste projeto foi criar uma peça capaz de transmitir a energia e a empolgação de um rodeio, despertando o interesse do público em participar do evento.<br><br><strong>O principal desafio foi encontrar imagens de qualidade suficiente para compor a narrativa, já que todo o material precisou ser selecionado e organizado a partir de diferentes vídeos do YouTube.</strong> Além da edição, foi realizado um trabalho de ritmo, sincronização musical e construção de atmosfera utilizando músicas livres de direitos autorais.">
-    <div class="item-overlay"><div class="item-title">Rodeo</div></div>
-</div>
+                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=3');" data-video="https://www.youtube.com/embed/odmetHBSpL0" data-format="vertical" data-desc="O objetivo deste projeto foi transmitir uma imagem moderna, elegante e acessível para a marca. <strong>A edição foi feita de forma mais discreta, evitando efeitos excessivos para que o foco principal permanecesse nos produtos apresentados.</strong><br><br>Foram utilizados motion graphics, sound effects e técnicas de tratamento sonoro, além de testes com VFX em Inteligência Artificial durante o processo de pós-produção.">
+                    <div class="item-overlay"><div class="item-title">Story Loja de Roupas</div></div>
+                </div>
 
-<!-- [3] VERTICAL - Story Loja de Roupas -->
-<div class="item" style="background-image: url('SUA_CAPA_AQUI.jpg');" data-video="https://www.youtube.com/embed/odmetHBSpL0" data-format="vertical" data-desc="O objetivo deste projeto foi transmitir uma imagem moderna, elegante e acessível para a marca. <strong>A edição foi feita de forma mais discreta, evitando efeitos excessivos para que o foco principal permanecesse nos produtos apresentados.</strong><br><br>Foram utilizados motion graphics, sound effects e técnicas de tratamento sonoro, além de testes com VFX em Inteligência Artificial durante o processo de pós-produção.">
-    <div class="item-overlay"><div class="item-title">Story Loja de Roupas</div></div>
-</div>
+                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=4');" data-video="https://www.youtube.com/embed/b5DqEKC-cU4" data-format="vertical" data-desc="Mini documentário sobre Galileu Galilei, <strong>combinando narrativa visual, motion graphics, sound effects e imagens geradas por IA para ilustrar eventos históricos.</strong><br><br>A produção priorizou a clareza e a imersão da mensagem, totalmente inspirada no clássico estilo documental.">
+                    <div class="item-overlay"><div class="item-title">Galileu Galilei</div></div>
+                </div>
 
-<!-- [4] VERTICAL - Galileu Galilei -->
-<div class="item" style="background-image: url('SUA_CAPA_AQUI.jpg');" data-video="https://www.youtube.com/embed/b5DqEKC-cU4" data-format="vertical" data-desc="Mini documentário sobre Galileu Galilei, <strong>combinando narrativa visual, motion graphics, sound effects e imagens geradas por IA para ilustrar eventos históricos.</strong><br><br>A produção priorizou a clareza e a imersão da mensagem, totalmente inspirada no clássico estilo documental.">
-    <div class="item-overlay"><div class="item-title">Galileu Galilei</div></div>
-</div>
+                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=5');" data-video="https://www.youtube.com/embed/D4ymf7RrAj4" data-format="vertical" data-desc="O objetivo principal deste corte <strong>é despertar a curiosidade do espectador e incentivá-lo a assistir ao conteúdo completo.</strong><br><br>A edição foi mantida simples, direta e dinâmica, utilizando legendas estratégicas e mantendo o foco total na mensagem transmitida pelo palestrante.">
+                    <div class="item-overlay"><div class="item-title">Talk Palestra</div></div>
+                </div>
 
-<!-- [5] VERTICAL - Talk Palestra -->
-<div class="item" style="background-image: url('SUA_CAPA_AQUI.jpg');" data-video="https://www.youtube.com/embed/D4ymf7RrAj4" data-format="vertical" data-desc="O objetivo principal deste corte <strong>é despertar a curiosidade do espectador e incentivá-lo a assistir ao conteúdo completo.</strong><br><br>A edição foi mantida simples, direta e dinâmica, utilizando legendas estratégicas e mantendo o foco total na mensagem transmitida pelo palestrante.">
-    <div class="item-overlay"><div class="item-title">Talk Palestra</div></div>
-</div>
-
-                <!-- [6] CARD: Sobre Mim (Sempre travado por último) -->
                 <div class="item item-sobre" style="background-image: url('https://picsum.photos/600/340?random=6');" id="cardSobre">
                     <div class="item-overlay">
                         <div class="item-title">
@@ -365,7 +363,6 @@
             </div>
         </section>
 
-        <!-- TELA 2: SOBRE MIM -->
         <section class="section">
             <div class="dica-voltar">↑ Role para cima para voltar aos vídeos</div>
             <div class="sobre-content">
@@ -373,11 +370,11 @@
                 <div class="sobre-texto">
                     <h2>Olá, me chamo Maycon Henrique</h2>
                     
-                    <p>Especializado em edição de vídeo e Motion Graphics, atuando há 2 anos com foco em criar narrativas visuais que prendem a atenção desde o primeiro segundo. Trabalho com ritmo de edição e cortes precisos, combinados com Color Grading e Color Correction avançados.</p>
+                    <p>Sou especializado em edição de vídeo e Motion Graphics, atuando há 2 anos com foco em criar narrativas visuais que prendem a atenção desde o primeiro segundo. Trabalho com ritmo de edição e cortes precisos, combinados com Color Grading e Color Correction avançados.</p>
                     
-                    <p>Com experiência em diversos formatos desde Shorts, Reels e Ads até documentários e vídeos institucionais corporativos, meu principal objetivo é garantir a mais alta retenção, sempre elevando o material ao nível máximo de qualidade que o projeto exige.</p>
+                    <p>Com experiência em diversos formatos — desde Shorts, Reels e Ads até documentários e vídeos institucionais corporativos —, meu principal objetivo é garantir a mais alta retenção, sempre elevando o material ao nível máximo de qualidade que o projeto audiovisual exige.</p>
                     
-                    <p>Busco melhoria contínua, e me mantenho atualizado sobre as tendências do mercado, sempre estudando para entregar o máximo de excelência em cada projeto.</p>
+                    <p>Busco melhoria contínua e me mantenho atualizado sobre as tendências do mercado, sempre estudando para entregar o máximo de excelência em cada projeto.</p>
 
                     <div class="softwares">
                         <h3>Conhecimento em:</h3>
@@ -419,7 +416,6 @@
 
     </div>
 
-    <!-- Modal do Vídeo -->
     <div class="modal" id="videoModal">
         <span class="fechar-btn" id="fecharModal">&times;</span>
         <div class="modal-content">
@@ -552,7 +548,9 @@
                     playerVideo.classList.remove('video-vertical');
                 }
                 
+                // ALTERAÇÃO AQUI: innerHTML para fazer as tags <strong> e <br> funcionarem
                 videoDescription.innerHTML = videoDesc;
+                
                 const separator = videoSrc.includes('?') ? '&' : '?';
                 playerVideo.src = `${videoSrc}${separator}autoplay=1`;
                 modal.classList.add('active');
@@ -562,7 +560,7 @@
         fecharModal.addEventListener('click', () => {
             modal.classList.remove('active');
             playerVideo.src = ''; 
-            videoDescription.innerText = '';
+            videoDescription.innerHTML = '';
         });
     </script>
 </body>
