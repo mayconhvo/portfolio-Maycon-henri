@@ -328,31 +328,30 @@
             </header>
 
             <div class="carousel">
-                <!-- [1] HORIZONTAL -->
-                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=1');" data-video="https://www.youtube.com/embed/F_c2ZlePo9s" data-desc="Compilação de projetos criado para demonstrar minhas principais habilidades em edição de vídeo, motion graphics, sound design e VFX.
-                    <p>Único software que não foi utilizado neste projeto foi o Blender. A proposta foi apresentar uma visão geral das minhas capacidades técnicas e criativas em diferentes estilos de produção audiovisual.</p>">
-                    <div class="item-overlay"><div class="item-title">Showreel</div></div>
-                </div>
-                
-                <!-- [2] HORIZONTAL -->
-                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=2');" data-video="https://www.youtube.com/embed/BxBIFfehuQk" data-desc="Descrição do segundo vídeo horizontal...">
-                    <div class="item-overlay"><div class="item-title">Vídeo Institucional</div></div>
-                </div>
+                <!-- [1] HORIZONTAL - Showreel -->
+                <div class="item" style="background-image: url('Show-reel.jpg');" data-video="https://www.youtube.com/embed/F_c2ZlePo9s" data-desc="Compilação de projetos criada para demonstrar minhas principais <strong>habilidades em edição de vídeo, motion graphics, sound design e VFX</strong>.<br><br>O único software que não foi utilizado neste projeto foi o Blender. A proposta foi apresentar uma visão geral das minhas capacidades técnicas e criativas em diferentes estilos de produção audiovisual.">
+    <div class="item-overlay"><div class="item-title">Showreel</div></div>
+</div>
 
-                <!-- [3] VERTICAL (Reels / Shorts / Story 1) -->
-                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=3');" data-video="https://www.youtube.com/embed/odmetHBSpL0" data-format="vertical" data-desc="Descrição do primeiro vídeo vertical (Reels)...">
-                    <div class="item-overlay"><div class="item-title">Edição de Shorts / Reels</div></div>
-                </div>
+<!-- [2] HORIZONTAL - Rodeo -->
+<div class="item" style="background-image: url('SUA_CAPA_AQUI.jpg');" data-video="https://www.youtube.com/embed/BxBIFfehuQk" data-desc="Vídeo promocional com títulos em inglês. O objetivo deste projeto foi criar uma peça capaz de transmitir a energia e a empolgação de um rodeio, despertando o interesse do público em participar do evento.<br><br><strong>O principal desafio foi encontrar imagens de qualidade suficiente para compor a narrativa, já que todo o material precisou ser selecionado e organizado a partir de diferentes vídeos do YouTube.</strong> Além da edição, foi realizado um trabalho de ritmo, sincronização musical e construção de atmosfera utilizando músicas livres de direitos autorais.">
+    <div class="item-overlay"><div class="item-title">Rodeo</div></div>
+</div>
 
-                <!-- [4] VERTICAL (Reels / Shorts / Story 2) -->
-                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=4');" data-video="https://www.youtube.com/embed/b5DqEKC-cU4" data-format="vertical" data-desc="Descrição do segundo vídeo vertical (Social Media)...">
-                    <div class="item-overlay"><div class="item-title">Social Media Editorial</div></div>
-                </div>
+<!-- [3] VERTICAL - Story Loja de Roupas -->
+<div class="item" style="background-image: url('SUA_CAPA_AQUI.jpg');" data-video="https://www.youtube.com/embed/odmetHBSpL0" data-format="vertical" data-desc="O objetivo deste projeto foi transmitir uma imagem moderna, elegante e acessível para a marca. <strong>A edição foi feita de forma mais discreta, evitando efeitos excessivos para que o foco principal permanecesse nos produtos apresentados.</strong><br><br>Foram utilizados motion graphics, sound effects e técnicas de tratamento sonoro, além de testes com VFX em Inteligência Artificial durante o processo de pós-produção.">
+    <div class="item-overlay"><div class="item-title">Story Loja de Roupas</div></div>
+</div>
 
-                <!-- [5] VERTICAL (Reels / Shorts / Story 3) -->
-                <div class="item" style="background-image: url('https://picsum.photos/600/340?random=5');" data-video="https://www.youtube.com/embed/D4ymf7RrAj4" data-format="vertical" data-desc="Descrição do terceiro vídeo vertical...">
-                    <div class="item-overlay"><div class="item-title">Motion para Reels</div></div>
-                </div>
+<!-- [4] VERTICAL - Galileu Galilei -->
+<div class="item" style="background-image: url('SUA_CAPA_AQUI.jpg');" data-video="https://www.youtube.com/embed/b5DqEKC-cU4" data-format="vertical" data-desc="Mini documentário sobre Galileu Galilei, <strong>combinando narrativa visual, motion graphics, sound effects e imagens geradas por IA para ilustrar eventos históricos.</strong><br><br>A produção priorizou a clareza e a imersão da mensagem, totalmente inspirada no clássico estilo documental.">
+    <div class="item-overlay"><div class="item-title">Galileu Galilei</div></div>
+</div>
+
+<!-- [5] VERTICAL - Talk Palestra -->
+<div class="item" style="background-image: url('SUA_CAPA_AQUI.jpg');" data-video="https://www.youtube.com/embed/D4ymf7RrAj4" data-format="vertical" data-desc="O objetivo principal deste corte <strong>é despertar a curiosidade do espectador e incentivá-lo a assistir ao conteúdo completo.</strong><br><br>A edição foi mantida simples, direta e dinâmica, utilizando legendas estratégicas e mantendo o foco total na mensagem transmitida pelo palestrante.">
+    <div class="item-overlay"><div class="item-title">Talk Palestra</div></div>
+</div>
 
                 <!-- [6] CARD: Sobre Mim (Sempre travado por último) -->
                 <div class="item item-sobre" style="background-image: url('https://picsum.photos/600/340?random=6');" id="cardSobre">
@@ -553,7 +552,7 @@
                     playerVideo.classList.remove('video-vertical');
                 }
                 
-                videoDescription.innerText = videoDesc;
+                videoDescription.innerHTML = videoDesc;
                 const separator = videoSrc.includes('?') ? '&' : '?';
                 playerVideo.src = `${videoSrc}${separator}autoplay=1`;
                 modal.classList.add('active');
