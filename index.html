@@ -319,6 +319,37 @@
             user-select: none;
         }
         .fechar-btn:hover { color: #ff4d4d; transform: scale(1.1); }
+        /* =======================================================
+           REGRAS DE RESPONSIVIDADE PARA CELULAR (Telas até 768px)
+           ======================================================= */
+        @media (max-width: 768px) {
+            .header { top: 25px; }
+            .header h1 { font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 6px; }
+            .header p { font-size: 0.75rem; line-height: 1.4; padding: 0 15px; }
+
+            /* Diminui o tamanho do carrossel para caber na tela do celular */
+            .carousel { width: 270px; height: 152px; margin-top: 60px; }
+            .item-title { font-size: 0.95rem; }
+            .item-overlay { padding: 12px; }
+
+            /* Transforma a seção sobre mim em uma coluna de cima para baixo */
+            .sobre-content {
+                flex-direction: column; gap: 20px; padding: 25px 20px;
+                max-width: 90%; max-height: 75vh; overflow-y: auto;
+            }
+            .sobre-foto { width: 130px; height: 130px; }
+            .sobre-texto { text-align: center; }
+            .sobre-texto h2 { font-size: 1.4rem; margin-bottom: 8px; }
+            .sobre-texto p { font-size: 0.88rem; line-height: 1.5; margin-bottom: 8px; }
+            .softwares h3 { font-size: 0.85rem; }
+            .softwares-list { justify-content: center; gap: 8px; }
+            .software-item { padding: 6px 12px; }
+            .software-item span { font-size: 0.8rem; }
+            .dica-voltar { top: 15px; font-size: 0.75rem; }
+            .fechar-btn { top: 15px; right: 20px; font-size: 35px; }
+            .video-description { font-size: 0.95rem; max-width: 90%; padding-top: 12px; margin-top: 15px; }
+            iframe.video-vertical { max-width: 250px; max-height: 55vh; }
+        }
     </style>
 </head>
 <body>
@@ -425,22 +456,34 @@
     </div>
 
     <script>
-        const carousel = document.querySelector('.carousel');
+const carousel = document.querySelector('.carousel');
         const items = document.querySelectorAll('.item');
         const totalItems = items.length;
         const mainWrapper = document.getElementById('mainWrapper');
         const cardSobre = document.getElementById('cardSobre');
         
-        const radius = 560; 
+        // Ajusta o tamanho do raio 3D dependendo do tamanho da tela do dispositivo
+        let radius = window.innerWidth < 768 ? 280 : 560; 
         let originalTransformSobre = '';
 
-        items.forEach((item, index) => {
-            const angle = (360 / totalItems) * index;
-            const transformValue = `rotateY(${angle}deg) translateZ(${radius}px)`;
-            item.style.transform = transformValue;
-            
-            if(item.id === 'cardSobre') {
-                originalTransformSobre = transformValue;
+        function posicionarCards() {
+            radius = window.innerWidth < 768 ? 280 : 560;
+            items.forEach((item, index) => {
+                const angle = (360 / totalItems) * index;
+                const transformValue = `rotateY(${angle}deg) translateZ(${radius}px)`;
+                item.style.transform = transformValue;
+                
+                if(item.id === 'cardSobre') {
+                    originalTransformSobre = transformValue;
+                }
+            });
+        }
+
+        posicionarCards();
+        window.addEventListener('resize', () => {
+            posicionarCards();
+            if (!isSobreMimAberto) {
+                carousel.style.transform = `rotateY(${currentRotation}deg)`;
             }
         });
 
@@ -463,11 +506,12 @@
 
         atualizarReflexo();
 
-        window.addEventListener('wheel', (e) => {
+        // CONTROLADOR DE MOVIMENTO UNIFICADO (PC e Celular)
+        function moverGeral(deltaY) {
             if (isAnimating) return;
 
             if (isSobreMimAberto) {
-                if (e.deltaY < 0) {
+                if (deltaY < 0) {
                     isAnimating = true;
                     isSobreMimAberto = false;
                     mainWrapper.style.transform = 'translateY(0)'; 
@@ -486,14 +530,14 @@
                 return; 
             }
 
-            currentRotation -= e.deltaY * 0.08; 
+            currentRotation -= deltaY * 0.08; 
 
             if (currentRotation > 0) {
                 currentRotation = 0; 
             } else if (currentRotation <= -300) {
                 currentRotation = -300; 
                 
-                if (e.deltaY > 0) {
+                if (deltaY > 0) {
                     isAnimating = true; 
                     
                     cardSobre.style.transition = 'transform 0.7s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.7s ease-in';
@@ -512,7 +556,40 @@
                 carousel.style.transform = `rotateY(${currentRotation}deg)`;
                 atualizarReflexo(); 
             }
+        }
+
+        // Evento de Scroll para Computadores
+        window.addEventListener('wheel', (e) => {
+            moverGeral(e.deltaY);
         });
+
+        // Eventos de Toque (Swipe) para Celulares
+        let touchStartY = 0;
+        window.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+            if (!isSobreMimAberto) {
+                if (e.cancelable) e.preventDefault();
+            } else {
+                const sobreContent = document.querySelector('.sobre-content');
+                let touchCurrentY = e.touches[0].clientY;
+                let deltaY = touchStartY - touchCurrentY;
+                
+                if (sobreContent.scrollTop === 0 && deltaY < -10) {
+                    if (e.cancelable) e.preventDefault();
+                } else {
+                    return; 
+                }
+            }
+
+            let touchCurrentY = e.touches[0].clientY;
+            let deltaY = touchStartY - touchCurrentY; 
+            
+            moverGeral(deltaY * 0.5); 
+            touchStartY = touchCurrentY;
+        }, { passive: false });
 
         const modal = document.getElementById('videoModal');
         const playerVideo = document.getElementById('playerVideo');
@@ -548,9 +625,7 @@
                     playerVideo.classList.remove('video-vertical');
                 }
                 
-                // ALTERAÇÃO AQUI: innerHTML para fazer as tags <strong> e <br> funcionarem
                 videoDescription.innerHTML = videoDesc;
-                
                 const separator = videoSrc.includes('?') ? '&' : '?';
                 playerVideo.src = `${videoSrc}${separator}autoplay=1`;
                 modal.classList.add('active');
